@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitness-tracker
 });
 
 // // routes
-// app.use(require("./public/api.js"));
+require("./public/api");
 require("./routes/html-routes.js")(app);
 
 app.listen(PORT, () => {
