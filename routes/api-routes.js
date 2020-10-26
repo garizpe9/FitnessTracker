@@ -26,7 +26,7 @@ module.exports = function(app) {
     db.Workout.create({})
       .then(data => {
         res.json(data);
-        console.log(body, params)
+        console.log(data)
       })
       .catch(err => {
         res.json(err);
@@ -44,12 +44,5 @@ module.exports = function(app) {
       });
   });
 
-  app.post("/api/workouts/range",function (req,res){    
-    db.Workout.create({})
-    .then(data => res.json(data))
-    .catch(err => { 
-        res.json(err)
-    })
-});
 
 }
