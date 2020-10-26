@@ -26,10 +26,4 @@ app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
 });
 
-//Main Page: need to html render
-//need to get exercises
-//need to get current workout
-//need to get stats
 
-//Add ExercisePage:
-//need gto get exercises cardio/resistence from mongo
