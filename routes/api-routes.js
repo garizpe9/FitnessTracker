@@ -33,8 +33,8 @@ module.exports = function(app) {
       });
   });
 
-  app.put("/api/workouts/:id", ({ body, params }, res) => {
-    db.Workout.findByIdAndUpdate(params.id, { $push: { exercises: body} }, { new: true })
+  app.put("/api/workouts/:id", (req, res) => {
+    db.Workout.update({_id: params.id,}, { $push: { exercises: req.body} })
      console.log(body, params)
       .then(data => {
         res.json(data);
