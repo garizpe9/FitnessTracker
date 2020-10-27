@@ -34,7 +34,7 @@ module.exports = function(app) {
   });
 
   app.put("/api/workouts/:id", ({ params, body }, res) => {
-    db.Workout.update({_id: params.id,}, { $push: { exercises: body} })
+    db.Workout.update({"_id": params.id,}, { $push: { "exercises": body} })
      console.log(body, params)
       .then(data => {
         res.json(data);
