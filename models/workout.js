@@ -11,8 +11,6 @@ const WorkoutSchema = new Schema({
         {
         type: {
             type: String,
-            trim: true,
-            required: "Enter exercise type"
         },
         name: {
             type: String,
@@ -52,6 +50,7 @@ const WorkoutSchema = new Schema({
 // To include virtuals in res.json(), you need to set the toJSON schema option to { virtuals: true }.
 
 // https://mongoosejs.com/docs/2.7.x/docs/virtuals.html
+// will need to investigate for retruning to workout
 
 
 
