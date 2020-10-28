@@ -23,6 +23,20 @@ module.exports = function(app) {
       });
   });
   
+  app.get("/api/workouts/:id", (req, res) => {
+    db.Workout.findOne(
+      {
+        _id: mongojs.ObjectId(req.params.id)
+      },
+    )
+      .then(data => {
+        res.json(data);
+      })
+      .catch(err => {
+        res.json(err);
+      });
+  });
+
   app.post("/api/workouts", (req, res) => {
     db.Workout.create({})
       .then(data => {
@@ -34,24 +48,23 @@ module.exports = function(app) {
       });
   });
 
-  app.post("/api/workouts/:id", (req, res) => {
+  app.put("/api/workouts/:id", (req, res) => {
     console.log(req)
     db.Workout.update(
       {
         _id: mongojs.ObjectId(req.params.id)
       },
-      {$set: {
+      {$push: {
         exercises: req.body.exercises
         }
-      } 
-      )
-     console.log(req)
-      .then(data => {
-        res.json(data);
-      })
-      .catch(err => {
-        res.json(err);
-      });
+      },
+     (error, data) => {
+      if (error) {
+        res.send(error);
+      } else {
+        res.send(data);
+      }
+     })
   });
 
 }
