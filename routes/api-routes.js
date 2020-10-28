@@ -33,9 +33,10 @@ module.exports = function(app) {
       });
   });
 
-  app.put("/api/workouts/:id", ({ params, body }, res) => {
-    db.Workout.update({"_id": params.id,}, { $push: { "exercises": body} })
-     console.log(body, params)
+  app.put("/api/workouts/:id", (req, res) => {
+    console.log(req)
+    db.Workout.updateOne({_id: req.params.id,}, {exercises: req.body.exercises})
+     console.log(req)
       .then(data => {
         res.json(data);
       })
