@@ -55,7 +55,7 @@ module.exports = function(app) {
         _id: mongojs.ObjectId(req.params.id)
       },
       {$push: {
-        exercises: req.body.exercises
+        exercises: req.body
         }
       },
      (error, data) => {

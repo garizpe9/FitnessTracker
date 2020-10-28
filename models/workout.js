@@ -47,10 +47,18 @@ const WorkoutSchema = new Schema({
     }
 );
 
-// To include virtuals in res.json(), you need to set the toJSON schema option to { virtuals: true }.
+WorkoutSchema.virtual('totalDuration').get(function() {
 
-// https://mongoosejs.com/docs/2.7.x/docs/virtuals.html
-// will need to investigate for retruning to workout
+var total = 0;
+
+for (var i  = 0; i < this.exercises.length; i++){
+
+   total  += this.exercises[i].duration;
+    
+}
+return total
+
+  });
 
 
 
