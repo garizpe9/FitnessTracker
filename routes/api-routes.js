@@ -24,7 +24,7 @@ module.exports = function(app) {
   });
   
   app.get("/api/workouts/:id", (req, res) => {
-    db.Workout.findOne(
+    db.Workout.find(
       {
         _id: mongojs.ObjectId(req.params.id)
       },
@@ -38,7 +38,9 @@ module.exports = function(app) {
   });
 
   app.post("/api/workouts", (req, res) => {
-    db.Workout.create({})
+    db.Workout.create({
+      day: Date.now()
+    })
       .then(data => {
         res.json(data);
         console.log(data)
@@ -47,6 +49,8 @@ module.exports = function(app) {
         res.json(err);
       });
   });
+
+
 
   app.put("/api/workouts/:id", (req, res) => {
     console.log(req)
